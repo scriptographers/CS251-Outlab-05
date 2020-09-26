@@ -1,30 +1,38 @@
 #!/bin/bash
 
-# Task 2 D
+# Task 2 E
 
 # Giving better names to the CLI arguments
 file1="$1"
 file2="$2"
 
-# awk letter_to_grade=$file2 '
-# BEGIN {
-#     FS = ","
-#     RS = "\r\n"
-# }
-# {
-#     sed -n -r "2,${/"$4"/ s/"$4"// p}" $letter_to_grade
-# }
-# ' $file1
-
 awk '
 BEGIN {
     FS = ","
     RS = "\r\n"
+    points = 0
+    credits = 0
 }
 {
-    system("sed -n -r '"'"'2,${/"$7"/ s/\n// p}'"'"' ./resources/letterGradeToNumber.csv")
+    # File 1
+    if (FNR == NR) {
+        if (FNR > 1) {
+            grade[$1] = int($2)
+            # printf $2 "\n"
+        }
+    }
+    # File 2
+    else {
+        if (FNR > 1) {
+            # print $7, grade[$7]
+            points += $5 * grade[$7]
+            credits += $5
+        }
+    }
 }
-' $file1 > x
-
-awk -F, '{print $2}' x
-
+END {
+    # print credits "\n" points
+    # printf points/credits
+    printf "%.4f\n", points/credits
+}
+' $file2 $file1
