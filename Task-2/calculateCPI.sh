@@ -34,5 +34,8 @@ END {
     if (credits > 0){ # Check for division by 0
         printf "%.4f\n", points/credits
     }
+    else{
+        printf "0.0\n"
+    }
 }
 ' $file2 $file1
