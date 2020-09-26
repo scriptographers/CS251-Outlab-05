@@ -1,4 +1,4 @@
-15
+14
 
 https://www.grymoire.com/Unix/Awk.html
 https://stackoverflow.com/questions/32481877/what-are-nr-and-fnr-and-what-does-nr-fnr-imply
@@ -8,5 +8,16 @@ https://stackoverflow.com/questions/19075671/how-do-i-use-shell-variables-in-an-
 https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
 https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
 https://stackoverflow.com/questions/9591744/how-to-add-to-the-end-of-lines-containing-a-pattern-with-sed-or-awk
-
-
+https://stackoverflow.com/questions/14634349/calling-an-executable-program-using-awk
+https://stackoverflow.com/questions/33105808/can-i-pass-an-array-to-awk-using-v
+https://www.tutorialspoint.com/awk/awk_quick_guide.htm
+https://www.joeldare.com/wiki/using_awk_on_csv_files
+https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+https://regexr.com/
+https://tldp.org/LDP/abs/html/sedawk.html
+https://stackoverflow.com/questions/45571233/sed-inside-an-awk-statement
+https://www.cs.ait.ac.th/~on/O/oreilly/unix/sedawk/ch02_05.htm
+https://bluescreenofjeff.com/2017-10-03-f-awk-yeah-advanced-sed-and-awk-usage-parsing-for-pentesters-3/
+https://www.unix.com/shell-programming-and-scripting/132590-pass-variable-sed-like-awk-v-switch.html
+https://unix.stackexchange.com/questions/362793/using-sed-awk-on-bash-script-variables
+https://stackoverflow.com/questions/40373676/use-variables-in-awk-and-or-sed
