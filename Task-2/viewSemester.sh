@@ -8,4 +8,5 @@ season="$2"
 year="$3"
 
 # sed -n -r "/$season/{/$year/ p}" $file
-sed -n -r "/$season/{/$year/ p}" $file | sort -k 4,5
+sed -n 1,3p $file # Print the header
+sed -n -r "/$season/{/$year/ p}" $file | sort -k3 # Sort according to course code
