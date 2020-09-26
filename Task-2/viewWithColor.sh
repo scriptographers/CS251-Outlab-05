@@ -3,7 +3,8 @@
 RAW=$1 # The raw, uncoloured input
 GUIDE=$2 # The color guide
 
-awk -v RAW=$RAW '
+# A bash string that stores the sed commands created by AWK
+SED_COMMANDS=$( awk -v RAW=$RAW '
 BEGIN {
     FS = ","
     RS = "\r\n"
@@ -23,8 +24,6 @@ END {
     # Reset all colours before printing
     printf("-e \"4,$ s/$/\"${RESET_ALL}\"/ p\" -e \"1,3 p\" "RAW) 
 }
-' $GUIDE > task_2_temp_file_1 # Redirect to temporary file "y"
+' $GUIDE )
 
-bash task_2_temp_file_1 # This executes the sed commands inside "y"
-
-rm -rf task_2_temp_file_1 # Remove temp file after execution
+eval "$SED_COMMANDS"
