@@ -1,28 +1,30 @@
 #!/bin/bash
 
-source ./resources/defineColors.sh # Loading in the bash color variables
-
-RAW=$1
-GUIDE=$2
-
-# Search "Tag" in RAW
-# Search GUIDE for the respective Tag / Use an associative array to store the data
-# FONT_COLOR[tag] = ...
-# Replace the field by $COLOR $BG_COLOR field
-# print this new line
-
-#sed -e "/Minor/ s/^/ $MAGENTA_FONT $YELLOW_BACKGROUND/" -e "/Minor/ s/$/ $RESET_ALL/" $RAW
+RAW=$1 # The raw, uncoloured input
+GUIDE=$2 # The color guide
 
 awk -v RAW=$RAW '
-    BEGIN{
-        FS = ","
+BEGIN {
+    FS = ","
+    RS = "\r\n"
+    printf("#!/bin/bash \n")
+    printf("source ./resources/defineColors.sh \n")
+    printf("sed -n -r ")
+}
+{
+    if (NR > 1) { # Exclude first header row
+        font = $3"_FONT"
+        bg   = $4"_BACKGROUND"
+        # Append font colour and BG color to the start of the line containing the fields
+        printf("-e \"/"$1"/ s/^/\"${"bg"}${"font"}\"/\" ") 
     }
-    {
-        if (NR > 1){
-            FONT_COLOR[$1] = $3
-            BG_COLOR[$1]   = $4
-            field = $1
-            sed -e "/Minor/ s/^/ $($3_FONT) $($4_BACKGROUND)/" -e "/$1/ s/$/ $($RESET_ALL)/" $($RAW)
-        }
-    }
-' $2
+}
+END {
+    # Reset all colours before printing
+    printf("-e \"4,$ s/$/\"${RESET_ALL}\"/ p\" -e \"1,3 p\" "RAW) 
+}
+' $GUIDE > task_2_temp_file_1 # Redirect to temporary file "y"
+
+bash task_2_temp_file_1 # This executes the sed commands inside "y"
+
+rm -rf task_2_temp_file_1 # Remove temp file after execution
