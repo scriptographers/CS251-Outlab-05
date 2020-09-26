@@ -6,7 +6,7 @@ RAW=$1   # The raw, uncoloured input
 GUIDE=$2 # The color guide
 
 # A bash string that stores the sed commands created by AWK
-SED_COMMANDS=$( awk -v RAW=$RAW '
+SED_COMMANDS=$(awk -v RAW=$RAW '
 BEGIN {
     FS = ","
     RS = "\r\n"
@@ -26,6 +26,6 @@ END {
     # Reset all colours before printing
     printf("-e \"4,$ s/$/\"${RESET_ALL}\"/ p\" -e \"1,3 p\" "RAW)
 }
-' $GUIDE )
+' $GUIDE)
 
 eval "$SED_COMMANDS"
