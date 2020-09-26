@@ -18,14 +18,12 @@ BEGIN {
     if (FNR == NR) {
         if (FNR > 1) {
             grade[$1] = int($2)
-            # printf $2 "\n"
         }
     }
     # File 2
     else {
         if (FNR > 1) {
             if ($2 == season && $1 == year) {
-                # print $7, grade[$7]
                 points += $5 * grade[$7]
                 credits += $5
             }
@@ -33,8 +31,8 @@ BEGIN {
     }
 }
 END {
-    # print credits "\n" points
-    # printf points/credits
-    printf "%.4f\n", points/credits
+    if (credits > 0){
+        printf "%.4f\n", points/credits
+    }
 }
 ' $file2 $file1
