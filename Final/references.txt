@@ -1,8 +1,12 @@
-14
+15
 
-Awk:
-
-
-Sed:
+https://www.grymoire.com/Unix/Awk.html
+https://stackoverflow.com/questions/32481877/what-are-nr-and-fnr-and-what-does-nr-fnr-imply
+https://stackoverflow.com/questions/2005192/how-to-execute-a-bash-command-stored-as-a-string-with-quotes-and-asterisk
+https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell
+https://stackoverflow.com/questions/19075671/how-do-i-use-shell-variables-in-an-awk-script
+https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+https://stackoverflow.com/questions/9591744/how-to-add-to-the-end-of-lines-containing-a-pattern-with-sed-or-awk
 
 
