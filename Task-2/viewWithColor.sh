@@ -1,6 +1,8 @@
 #!/bin/bash
 
-RAW=$1 # The raw, uncoloured input
+# Task 2B
+
+RAW=$1   # The raw, uncoloured input
 GUIDE=$2 # The color guide
 
 # A bash string that stores the sed commands created by AWK
@@ -17,12 +19,12 @@ BEGIN {
         font = $3"_FONT"
         bg   = $4"_BACKGROUND"
         # Append font colour and BG color to the start of the line containing the fields
-        printf("-e \"/"$1"/ s/^/\"${"bg"}${"font"}\"/\" ") 
+        printf("-e \"/"$1"/ s/^/\"${"bg"}${"font"}\"/\" ")
     }
 }
 END {
     # Reset all colours before printing
-    printf("-e \"4,$ s/$/\"${RESET_ALL}\"/ p\" -e \"1,3 p\" "RAW) 
+    printf("-e \"4,$ s/$/\"${RESET_ALL}\"/ p\" -e \"1,3 p\" "RAW)
 }
 ' $GUIDE )
 
